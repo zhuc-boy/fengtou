@@ -5,13 +5,13 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-//var login = require("./routes/login");
+var login = require("./routes/login");
+var logout = require("./routes/logout");
 /*var search = require("./routes/search");
 var add = require("./routes/add");
 var edit = require("./routes/edit");
 var del = require("./routes/del");
-
-var logout = require("./routes/logout");*/
+*/
 var app = express();
 
 // view engine setup
@@ -24,10 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
-//app.use("/login", login);
+app.use("/login", login);
+app.use("/logout", logout);
 /*
 
-app.use("/logout", logout);
+
 
 app.use("/search", search); //查
 app.use("/add", add); //增
